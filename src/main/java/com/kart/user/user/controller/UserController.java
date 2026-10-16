@@ -1,5 +1,7 @@
 package com.kart.user.user.controller;
 
+import com.kart.user.user.dto.LoginRequest;
+import com.kart.user.user.dto.LoginResponse;
 import com.kart.user.user.dto.UserRegistrationRequest;
 import com.kart.user.user.dto.UserResponse;
 import com.kart.user.user.service.UserService;
@@ -24,5 +26,11 @@ public class UserController {
             @RequestBody UserRegistrationRequest userRegistrationRequest
     ) {
         return userService.register(userRegistrationRequest);
+    }
+
+    @PostMapping("/login")
+    @ResponseStatus(HttpStatus.OK)
+    public LoginResponse login(@Valid @RequestBody LoginRequest loginRequest) {
+        return userService.login(loginRequest);
     }
 }
